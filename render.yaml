@@ -1,13 +1,21 @@
-# Render Blueprint — static brief site
-# https://render.com/docs/blueprint-spec
+# Render Blueprint — бриф Киберсуббота (Vite static)
 services:
   - type: web
     name: cyber-saturday-cny-brief
     runtime: static
-    buildCommand: npm install && npm run build
-    staticPublishPath: dist
+    plan: free
+    branch: main
     autoDeployTrigger: commit
+    buildCommand: npm ci && npm run build
+    staticPublishPath: ./dist
     routes:
       - type: rewrite
         source: /*
         destination: /index.html
+    headers:
+      - path: /assets/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+      - path: /index.html
+        name: Cache-Control
+        value: no-cache
