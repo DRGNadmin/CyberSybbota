@@ -1,13 +1,14 @@
-# Киберсуббота — бриф Mobile Legends и Genshin Impact
+# Киберсуббота — бриф и смета
 
-Бриф и смета зоны на фестивале «Киберсуббота» (Сколково, 6 февраля 2027). Бюджет: **900 000 ₽**.
+Зона Mobile Legends + Genshin Impact на фестивале «Киберсуббота» (Сколково, 6 февраля 2027). Бюджет: **900 000 ₽**.
 
-## Что внутри
+## Файлы
 
-- Просмотр брифа в браузере: описание, расписание, смета, метрики
-- Word-файл: [`MLBB_CyberSaturday_CNY_Brief_Budget.docx`](./MLBB_CyberSaturday_CNY_Brief_Budget.docx)
+- Смета в формате КП: [`MLBB_CyberSaturday_CNY_Smeta.xlsx`](./MLBB_CyberSaturday_CNY_Smeta.xlsx)
+- Бриф Word: [`MLBB_CyberSaturday_CNY_Brief_Budget.docx`](./MLBB_CyberSaturday_CNY_Brief_Budget.docx)
+- Исходное КП площадки: `uploads/`
 
-## Запуск
+## Запуск сайта
 
 ```bash
 npm install
