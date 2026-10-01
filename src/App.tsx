@@ -1,6 +1,6 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import {
-  budgetRows,
+  budgetSections,
   eventMeta,
   formatRub,
   genshinPoints,
@@ -9,6 +9,7 @@ import {
   promoNote,
   schedule,
   scheduleNote,
+  sectionTotal,
 } from './data/brief'
 
 const ease = [0.22, 1, 0.36, 1] as const
@@ -129,7 +130,7 @@ function SectionTitle({
 
 export default function App() {
   const reduce = useReducedMotion()
-  const total = budgetRows.reduce((sum, row) => sum + row.amount, 0)
+  const total = budgetSections.reduce((sum, section) => sum + sectionTotal(section), 0)
 
   return (
     <div className="cny-scene cny-clouds min-h-screen overflow-x-hidden">
@@ -145,12 +146,20 @@ export default function App() {
               Киберсуббота
             </p>
           </div>
-          <a
-            href="/MLBB_CyberSaturday_CNY_Brief_Budget.docx"
-            className="border border-[var(--gold)]/50 bg-[rgba(196,30,58,0.35)] px-4 py-2 text-sm text-[var(--paper)] transition hover:border-[var(--gold)] hover:bg-[rgba(196,30,58,0.55)]"
-          >
-            Скачать .docx
-          </a>
+          <div className="flex flex-wrap gap-2">
+            <a
+              href="/MLBB_CyberSaturday_CNY_Smeta.xlsx"
+              className="border border-[var(--gold)]/50 bg-[rgba(196,30,58,0.35)] px-4 py-2 text-sm text-[var(--paper)] transition hover:border-[var(--gold)] hover:bg-[rgba(196,30,58,0.55)]"
+            >
+              Скачать смету .xlsx
+            </a>
+            <a
+              href="/MLBB_CyberSaturday_CNY_Brief_Budget.docx"
+              className="border border-[var(--line)] px-4 py-2 text-sm text-[var(--paper-dim)] transition hover:border-[var(--gold)]"
+            >
+              .docx
+            </a>
+          </div>
         </nav>
 
         <Lantern className="top-[14%] right-[6%] hidden h-40 w-28 opacity-95 md:block" delay={0} />
@@ -311,46 +320,67 @@ export default function App() {
             </p>
           </div>
           <p className="mt-3 max-w-2xl text-sm text-[var(--muted)]">
-            В итоговую сумму входит возвращаемый залог за телефоны 40 000 ₽.
+            Аренда площадки, персонал и трансляция — по ценам КП. Компьютеры не арендуем.
           </p>
 
-          <div className="panel-cny mt-8 overflow-x-auto">
-            <table className="min-w-full text-left text-sm">
-              <thead className="bg-[var(--crimson-deep)] text-[var(--paper)]">
-                <tr>
-                  <th className="px-4 py-3 font-medium">Статья</th>
-                  <th className="hidden px-4 py-3 font-medium md:table-cell">Комментарий</th>
-                  <th className="px-4 py-3 text-right font-medium">Сумма, ₽</th>
-                </tr>
-              </thead>
-              <tbody>
-                {budgetRows.map((row, i) => (
-                  <tr
-                    key={row.item}
-                    className="border-t border-[var(--line)]"
-                    style={{
-                      background: i % 2 === 0 ? 'rgba(196,30,58,0.1)' : 'transparent',
-                    }}
-                  >
-                    <td className="px-4 py-3 text-[var(--paper)]">
-                      {row.item}
-                      <p className="mt-1 text-xs text-[var(--muted)] md:hidden">{row.note}</p>
-                    </td>
-                    <td className="hidden px-4 py-3 text-[var(--muted)] md:table-cell">{row.note}</td>
-                    <td className="px-4 py-3 text-right whitespace-nowrap text-[var(--gold-soft)]">
-                      {formatRub(row.amount)}
-                    </td>
-                  </tr>
-                ))}
-                <tr className="border-t border-[var(--gold)] bg-[rgba(240,193,75,0.14)]">
-                  <td className="px-4 py-3 font-semibold text-[var(--paper)]">Итого</td>
-                  <td className="hidden px-4 py-3 md:table-cell" />
-                  <td className="px-4 py-3 text-right font-semibold text-[var(--gold)]">
-                    {formatRub(total)}
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+          <div className="mt-8 space-y-6">
+            {budgetSections.map((section) => (
+              <div key={section.title} className="panel-cny overflow-x-auto">
+                <div className="bg-[var(--crimson-deep)] px-4 py-2.5 text-sm font-medium tracking-wide text-[var(--paper)]">
+                  {section.title}
+                </div>
+                <table className="min-w-full text-left text-sm">
+                  <thead className="text-[var(--muted)]">
+                    <tr className="border-b border-[var(--line)]">
+                      <th className="px-4 py-2 font-medium">Наименование</th>
+                      <th className="hidden px-4 py-2 font-medium md:table-cell">Описание</th>
+                      <th className="hidden px-4 py-2 text-right font-medium sm:table-cell">Кол-во</th>
+                      <th className="px-4 py-2 text-right font-medium">Стоимость, ₽</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {section.rows.map((row, i) => (
+                      <tr
+                        key={section.title + row.item}
+                        className="border-t border-[var(--line)]"
+                        style={{
+                          background: i % 2 === 0 ? 'rgba(196,30,58,0.1)' : 'transparent',
+                        }}
+                      >
+                        <td className="px-4 py-3 text-[var(--paper)]">
+                          {row.item}
+                          <p className="mt-1 text-xs text-[var(--muted)] md:hidden">{row.note}</p>
+                        </td>
+                        <td className="hidden px-4 py-3 text-[var(--muted)] md:table-cell">
+                          {row.note}
+                        </td>
+                        <td className="hidden px-4 py-3 text-right whitespace-nowrap text-[var(--paper-dim)] sm:table-cell">
+                          {row.qty != null ? `${row.qty}${row.unit ? ` ${row.unit}` : ''}` : '—'}
+                        </td>
+                        <td className="px-4 py-3 text-right whitespace-nowrap text-[var(--gold-soft)]">
+                          {formatRub(row.amount)}
+                        </td>
+                      </tr>
+                    ))}
+                    <tr className="border-t border-[var(--line)] bg-[rgba(240,193,75,0.08)]">
+                      <td className="px-4 py-2.5 font-medium text-[var(--paper)]" colSpan={3}>
+                        Итого по блоку
+                      </td>
+                      <td className="px-4 py-2.5 text-right font-medium text-[var(--gold)]">
+                        {formatRub(sectionTotal(section))}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            ))}
+
+            <div className="panel-cny flex items-center justify-between gap-4 bg-[rgba(240,193,75,0.14)] px-4 py-4">
+              <span className="font-display text-lg text-[var(--paper)]">Итого</span>
+              <span className="font-display text-2xl text-[var(--gold)]">
+                {formatRub(total)} ₽
+              </span>
+            </div>
           </div>
         </section>
 

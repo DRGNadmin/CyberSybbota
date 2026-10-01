@@ -8,7 +8,7 @@ export const eventMeta = {
 }
 
 export const mlbbPoints = [
-  'турнир 5×5: команды регистрируются заранее, приз 40 000 ₽ и алмазы',
+  'турнир 5×5: команды регистрируются заранее, приз 25 000 ₽ и алмазы',
   '«царь горы» 1×1 за алмазы',
   'викторина, бинго, конкурс рисунков',
   '2 косплеера и фотозона 3×2 м — фото весь день',
@@ -23,7 +23,7 @@ export const promoNote =
 
 export const genshinPoints = [
   'декор в стиле китайского Нового года и игрового праздника фонарей',
-  '2 компьютера с мини-играми Genshin Impact',
+  'мини-игры Genshin Impact на зоне',
   'телевизор: запуск фонариков из игрового события',
   '1 косплеерша — фото весь день',
 ]
@@ -46,29 +46,156 @@ export const schedule = [
   { time: '21:45–22:30', activity: 'Демонтаж' },
 ]
 
-export const budgetRows = [
-  { item: 'Косплееры Mobile Legends (2 чел.)', note: 'фото весь день', amount: 90000 },
-  { item: 'Косплеерша Genshin Impact (1 чел.)', note: 'фото весь день', amount: 50000 },
-  { item: 'Фотозона Mobile Legends 3×2 м', note: 'каркас, печать, монтаж', amount: 45000 },
+export type BudgetLine = {
+  item: string
+  note: string
+  unit?: string
+  qty?: number
+  price?: number
+  amount: number
+}
+
+export type BudgetSection = {
+  title: string
+  rows: BudgetLine[]
+}
+
+/** Цены персонала и ТВ — из КП XP Киберарена / Stratos */
+export const budgetSections: BudgetSection[] = [
   {
-    item: 'Декор зоны Genshin Impact',
-    note: 'панели, ткань, фонари, фотофон',
-    amount: 70000,
+    title: '1. Аренда локаций',
+    rows: [
+      {
+        item: 'Аренда площадки',
+        note: 'день мероприятия',
+        unit: 'сутки',
+        qty: 1,
+        price: 348000,
+        amount: 348000,
+      },
+    ],
   },
-  { item: 'Декор под Китайский Новый год', note: 'зона Mobile Legends и проходы', amount: 100000 },
-  { item: 'Доставка в Сколково', note: 'декор и техника, 2 рейса', amount: 25000 },
-  { item: 'Ведущий', note: 'около 10 часов', amount: 80000 },
-  { item: 'Алмазы Mobile Legends 15 000 шт.', note: 'призы', amount: 24150 },
-  { item: 'Денежный приз турнира 5×5', note: '', amount: 50000 },
-  { item: 'Бинго и расходники', note: '', amount: 25000 },
-  { item: 'Покупки в Genshin Impact для зоны', note: 'валюта и оформление', amount: 12000 },
-  { item: 'Зарядка для телефонов', note: '', amount: 20000 },
-  { item: 'Аренда 14 смартфонов', note: '2 суток, с резервом', amount: 15900 },
-  { item: 'Залог за телефоны', note: 'возвращается', amount: 40000 },
-  { item: 'Медийный гость', note: '', amount: 110000 },
-  { item: 'Монтаж и демонтаж зон', note: '', amount: 70000 },
-  { item: 'Запас на непредвиденное', note: '', amount: 72950 },
-] as const
+  {
+    title: '2. Техническое обслуживание зон',
+    rows: [
+      {
+        item: 'Администратор зоны',
+        note: 'операционные вопросы на площадке',
+        unit: 'чел.',
+        qty: 4,
+        price: 7800,
+        amount: 31200,
+      },
+      {
+        item: 'Технический администратор',
+        note: 'звук, экран, интернет, коммутация',
+        unit: 'чел.',
+        qty: 1,
+        price: 14400,
+        amount: 14400,
+      },
+    ],
+  },
+  {
+    title: '3. Медиа / трансляция',
+    rows: [
+      {
+        item: 'Режиссёр трансляции',
+        note: 'управление эфиром, камеры, графика',
+        unit: 'чел.',
+        qty: 1,
+        price: 25000,
+        amount: 25000,
+      },
+      {
+        item: 'Обсервер',
+        note: 'внутриигровая режиссура',
+        unit: 'чел.',
+        qty: 1,
+        price: 20000,
+        amount: 20000,
+      },
+      {
+        item: 'Инженер по звуку',
+        note: 'звук на площадке и в эфире',
+        unit: 'чел.',
+        qty: 1,
+        price: 18000,
+        amount: 18000,
+      },
+      {
+        item: 'Инженер трансляции',
+        note: 'сигнал, стабильность эфира',
+        unit: 'чел.',
+        qty: 1,
+        price: 25000,
+        amount: 25000,
+      },
+      {
+        item: 'Режиссёр по графике',
+        note: 'графика в трансляции',
+        unit: 'чел.',
+        qty: 1,
+        price: 20000,
+        amount: 20000,
+      },
+    ],
+  },
+  {
+    title: '4. Оборудование',
+    rows: [
+      {
+        item: 'Студийный свет',
+        note: '',
+        unit: 'комплект',
+        qty: 1,
+        price: 26000,
+        amount: 26000,
+      },
+      {
+        item: 'Телевизор 65″',
+        note: 'зона Genshin Impact и показ на зоне, смена до 12 ч',
+        unit: 'шт.',
+        qty: 2,
+        price: 3000,
+        amount: 6000,
+      },
+    ],
+  },
+  {
+    title: '5. Менеджмент',
+    rows: [
+      {
+        item: 'Менеджмент мероприятия',
+        note: 'координация зоны и программы',
+        unit: 'проект',
+        qty: 1,
+        price: 80000,
+        amount: 80000,
+      },
+    ],
+  },
+  {
+    title: '6. Организация ивента',
+    rows: [
+      { item: 'Косплееры Mobile Legends (2 чел.)', note: 'фото весь день', amount: 45000 },
+      { item: 'Косплеерша Genshin Impact (1 чел.)', note: 'фото весь день', amount: 25000 },
+      { item: 'Фотозона Mobile Legends 3×2 м', note: 'каркас, печать, монтаж', amount: 15000 },
+      { item: 'Декор зоны Genshin Impact', note: 'панели, ткань, фонари, фотофон', amount: 30000 },
+      { item: 'Декор под Китайский Новый год', note: 'зона Mobile Legends и проходы', amount: 25000 },
+      { item: 'Ведущий', note: '', amount: 25000 },
+      { item: 'Алмазы Mobile Legends 15 000 шт.', note: 'призы', amount: 24150 },
+      { item: 'Денежный приз турнира 5×5', note: '', amount: 25000 },
+      { item: 'Бинго и расходники', note: '', amount: 6000 },
+      { item: 'Покупки в Genshin Impact для зоны', note: 'валюта и оформление', amount: 5000 },
+      { item: 'Аренда 14 смартфонов', note: '2 суток, с резервом', amount: 15900 },
+      { item: 'Медийный гость', note: '', amount: 25000 },
+      { item: 'Запас на непредвиденное', note: '', amount: 20350 },
+    ],
+  },
+]
+
+export const budgetRows = budgetSections.flatMap((section) => section.rows)
 
 export const metrics = [
   { metric: 'Уникальные гости зоны', goal: '500–650' },
@@ -86,4 +213,8 @@ export const metrics = [
 
 export function formatRub(n: number) {
   return new Intl.NumberFormat('ru-RU').format(n)
+}
+
+export function sectionTotal(section: BudgetSection) {
+  return section.rows.reduce((sum, row) => sum + row.amount, 0)
 }
