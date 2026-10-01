@@ -1,0 +1,13 @@
+# Render Blueprint — static brief site
+# https://render.com/docs/blueprint-spec
+services:
+  - type: web
+    name: cyber-saturday-cny-brief
+    runtime: static
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    autoDeployTrigger: commit
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
