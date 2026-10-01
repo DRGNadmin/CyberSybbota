@@ -3,9 +3,8 @@ services:
   - type: web
     name: cyber-saturday-cny-brief
     runtime: static
-    plan: free
     branch: main
-    autoDeployTrigger: commit
+    autoDeploy: true
     buildCommand: npm ci && npm run build
     staticPublishPath: ./dist
     routes:
