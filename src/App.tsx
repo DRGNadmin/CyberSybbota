@@ -6,6 +6,7 @@ import {
   genshinPoints,
   metrics,
   mlbbPoints,
+  promoNote,
   schedule,
   scheduleNote,
 } from './data/brief'
