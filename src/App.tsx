@@ -151,18 +151,33 @@ export default function App() {
           </a>
         </nav>
 
-        <Lantern className="top-[16%] right-[7%] hidden h-36 w-24 opacity-95 md:block" delay={0} />
+        <Lantern className="top-[14%] right-[6%] hidden h-40 w-28 opacity-95 md:block" delay={0} />
+        <Lantern className="top-[34%] left-[3%] hidden h-28 w-20 opacity-90 lg:block" delay={1.1} />
+        <Lantern className="top-[22%] right-[22%] hidden h-24 w-16 opacity-75 xl:block" delay={1.8} />
         <Lantern
-          className="top-[38%] left-[4%] hidden h-24 w-16 opacity-80 lg:block"
-          delay={1.1}
+          className="right-[18%] bottom-[12%] hidden h-20 w-14 opacity-80 xl:block"
+          delay={2.4}
           tone="gold"
         />
-        <Lantern className="right-[20%] bottom-[14%] hidden h-20 w-14 opacity-70 xl:block" delay={2} />
+
+        <div
+          className="pointer-events-none absolute top-28 right-0 hidden w-14 flex-col items-center gap-2 lg:flex"
+          aria-hidden
+        >
+          <div className="cny-seal font-festive flex h-12 w-12 items-center justify-center text-2xl text-[var(--gold-soft)]">
+            福
+          </div>
+          <div className="w-10 bg-[var(--crimson)] px-1 py-6 text-center shadow-[0_0_20px_rgba(196,30,58,0.4)]">
+            <p className="font-festive writing-vertical text-xl leading-tight text-[var(--gold-soft)]">
+              新春快乐
+            </p>
+          </div>
+        </div>
 
         <div className="relative z-10 mx-auto flex max-w-6xl flex-col justify-center pt-[10vh] sm:pt-[14vh]">
           <CloudOrnament className="mb-6 h-8 w-48 text-[var(--gold)] opacity-80" />
           <motion.p
-            className="font-festive mb-2 text-3xl text-[var(--crimson-bright)] sm:text-4xl"
+            className="font-festive mb-2 text-4xl text-[var(--crimson-bright)] sm:text-5xl"
             initial={reduce ? false : { opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease }}

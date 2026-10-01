@@ -50,10 +50,17 @@ body {
 
 .cny-scene {
   background:
-    radial-gradient(ellipse 50% 40% at 80% 8%, rgba(240, 193, 75, 0.22), transparent 55%),
-    radial-gradient(ellipse 60% 50% at 12% 15%, rgba(196, 30, 58, 0.55), transparent 58%),
-    radial-gradient(ellipse 90% 55% at 50% 105%, rgba(139, 10, 30, 0.7), transparent 55%),
-    linear-gradient(180deg, #2a050c 0%, #140306 42%, #1c050a 100%);
+    radial-gradient(ellipse 45% 35% at 78% 6%, rgba(240, 193, 75, 0.28), transparent 55%),
+    radial-gradient(ellipse 70% 55% at 10% 12%, rgba(230, 57, 80, 0.55), transparent 58%),
+    radial-gradient(ellipse 55% 40% at 55% 35%, rgba(196, 30, 58, 0.22), transparent 60%),
+    radial-gradient(ellipse 95% 55% at 50% 105%, rgba(139, 10, 30, 0.82), transparent 55%),
+    linear-gradient(180deg, #3a0712 0%, #1a0408 38%, #140306 100%);
+}
+
+.writing-vertical {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  letter-spacing: 0.15em;
 }
 
 .cny-clouds {
