@@ -1,0 +1,96 @@
+@import 'tailwindcss';
+
+:root {
+  --ink: #12080a;
+  --crimson: #9b1c2c;
+  --crimson-deep: #6e0f1c;
+  --gold: #d4a84b;
+  --gold-soft: #e8c97a;
+  --paper: #f3e6d4;
+  --paper-dim: #e5d3bb;
+  --smoke: #2a1619;
+  --muted: #b9a28f;
+  --line: rgba(212, 168, 75, 0.28);
+  --font-display: 'Unbounded', sans-serif;
+  --font-body: 'Geologica', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  font-family: var(--font-body);
+  color: var(--paper);
+  background: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--gold) 45%, transparent);
+  color: var(--ink);
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.lantern-glow {
+  background:
+    radial-gradient(ellipse 70% 45% at 15% 10%, rgba(155, 28, 44, 0.55), transparent 60%),
+    radial-gradient(ellipse 55% 40% at 85% 20%, rgba(212, 168, 75, 0.18), transparent 55%),
+    radial-gradient(ellipse 80% 50% at 50% 100%, rgba(110, 15, 28, 0.45), transparent 60%),
+    linear-gradient(165deg, #1a0a0d 0%, #12080a 45%, #1f0c10 100%);
+}
+
+.pattern-veil {
+  background-image:
+    linear-gradient(rgba(18, 8, 10, 0.55), rgba(18, 8, 10, 0.7)),
+    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4a84b' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+@keyframes float-lantern {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes rise-soft {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-float {
+  animation: float-lantern 5.5s ease-in-out infinite;
+}
+
+.animate-rise {
+  animation: rise-soft 0.8s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .animate-rise {
+    animation: none;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
