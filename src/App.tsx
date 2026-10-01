@@ -240,8 +240,7 @@ export default function App() {
           <SectionTitle zh="活动">Описание</SectionTitle>
           <p className="mt-5 max-w-3xl leading-relaxed text-[var(--paper-dim)]">
             Зона внутри фестиваля «Киберсуббота». Команды на турнир 5×5 регистрируются заранее.
-            Компьютеры, столы, телевизоры, звук и приставка — оборудование площадки. Активности
-            доступны всё время работы зоны.
+            Активности доступны всё время работы зоны. {promoNote}
           </p>
 
           <div className="mt-10 grid gap-6 lg:grid-cols-2">
