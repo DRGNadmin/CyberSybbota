@@ -8,7 +8,7 @@ export const eventMeta = {
 }
 
 export const mlbbPoints = [
-  'турнир 5×5: команды регистрируются заранее, приз 25 000 ₽ и алмазы',
+  'турнир 5×5: команды регистрируются заранее, приз 20 000 ₽ и алмазы',
   '«царь горы» 1×1 за алмазы',
   'викторина, бинго, конкурс рисунков',
   '2 косплеера и фотозона 3×2 м — фото весь день',
@@ -23,27 +23,26 @@ export const promoNote =
 
 export const genshinPoints = [
   'декор в стиле китайского Нового года и игрового праздника фонарей',
-  'мини-игры Genshin Impact на зоне',
+  '4 компьютера с мини-играми Genshin Impact',
   'телевизор: запуск фонариков из игрового события',
   '1 косплеерша — фото весь день',
 ]
 
 export const scheduleNote =
-  'Мини-игры, фотозона, косплей и фонарики доступны всё время работы зоны.'
+  'Зона работает до 18:00. Мини-игры, фотозона, косплей и фонарики доступны всё время.'
 
 export const schedule = [
   { time: '10:00–11:00', activity: 'Подготовка зоны, проверка техники, брифинг' },
   { time: '11:00', activity: 'Открытие зоны' },
-  { time: '12:30', activity: 'Сверка команд турнира 5×5 и публикация сетки' },
-  { time: '13:00', activity: 'Старт турнира 5×5' },
-  { time: '14:30', activity: 'Бинго и викторина' },
-  { time: '15:30', activity: 'Медийный гость на зоне' },
-  { time: '16:30', activity: 'Игры на вылет, турнир 5×5' },
-  { time: '18:30', activity: 'Полуфиналы' },
-  { time: '19:30', activity: 'Финал' },
-  { time: '20:15', activity: 'Награждение' },
-  { time: '21:30', activity: 'Закрытие зоны' },
-  { time: '21:45–22:30', activity: 'Демонтаж' },
+  { time: '12:00', activity: 'Сверка команд турнира 5×5 и публикация сетки' },
+  { time: '12:30', activity: 'Старт турнира 5×5' },
+  { time: '14:00', activity: 'Бинго и викторина' },
+  { time: '14:45', activity: 'Медийный гость на зоне' },
+  { time: '15:15', activity: 'Игры на вылет, турнир 5×5' },
+  { time: '16:15', activity: 'Полуфиналы' },
+  { time: '17:00', activity: 'Финал' },
+  { time: '17:30', activity: 'Награждение' },
+  { time: '18:00', activity: 'Закрытие зоны' },
 ]
 
 export type BudgetLine = {
@@ -60,7 +59,7 @@ export type BudgetSection = {
   rows: BudgetLine[]
 }
 
-/** Цены персонала и ТВ — из КП XP Киберарена / Stratos */
+/** Цены персонала, ПК и ТВ — из КП XP Киберарена / Stratos */
 export const budgetSections: BudgetSection[] = [
   {
     title: '1. Аренда локаций',
@@ -153,8 +152,16 @@ export const budgetSections: BudgetSection[] = [
         amount: 26000,
       },
       {
+        item: 'Игровой компьютер',
+        note: 'зона Genshin Impact, мини-игры; смена до 12 ч',
+        unit: 'шт.',
+        qty: 4,
+        price: 10440,
+        amount: 41760,
+      },
+      {
         item: 'Телевизор 65″',
-        note: 'зона Genshin Impact и показ на зоне, смена до 12 ч',
+        note: 'зона Genshin Impact и показ на зоне; смена до 12 ч',
         unit: 'шт.',
         qty: 2,
         price: 3000,
@@ -178,19 +185,18 @@ export const budgetSections: BudgetSection[] = [
   {
     title: '6. Организация ивента',
     rows: [
-      { item: 'Косплееры Mobile Legends (2 чел.)', note: 'фото весь день', amount: 45000 },
+      { item: 'Косплееры Mobile Legends (2 чел.)', note: 'фото весь день', amount: 40000 },
       { item: 'Косплеерша Genshin Impact (1 чел.)', note: 'фото весь день', amount: 25000 },
       { item: 'Фотозона Mobile Legends 3×2 м', note: 'каркас, печать, монтаж', amount: 15000 },
       { item: 'Декор зоны Genshin Impact', note: 'панели, ткань, фонари, фотофон', amount: 30000 },
-      { item: 'Декор под Китайский Новый год', note: 'зона Mobile Legends и проходы', amount: 25000 },
-      { item: 'Ведущий', note: '', amount: 25000 },
+      { item: 'Декор под Китайский Новый год', note: 'зона Mobile Legends и проходы', amount: 21590 },
+      { item: 'Ведущий', note: '', amount: 22000 },
       { item: 'Алмазы Mobile Legends 15 000 шт.', note: 'призы', amount: 24150 },
-      { item: 'Денежный приз турнира 5×5', note: '', amount: 25000 },
+      { item: 'Денежный приз турнира 5×5', note: '', amount: 20000 },
       { item: 'Бинго и расходники', note: '', amount: 6000 },
       { item: 'Покупки в Genshin Impact для зоны', note: 'валюта и оформление', amount: 5000 },
       { item: 'Аренда 14 смартфонов', note: '2 суток, с резервом', amount: 15900 },
-      { item: 'Медийный гость', note: '', amount: 25000 },
-      { item: 'Запас на непредвиденное', note: '', amount: 20350 },
+      { item: 'Медийный гость', note: '', amount: 20000 },
     ],
   },
 ]
@@ -205,7 +211,7 @@ export const metrics = [
   { metric: 'Фото у зоны и с косплеем', goal: '250–350' },
   { metric: 'Гости уголка Genshin Impact', goal: '120–180' },
   { metric: 'Участники викторины и бинго', goal: '70–100' },
-  { metric: 'Длительность трансляции', goal: '10–12 ч' },
+  { metric: 'Длительность трансляции', goal: 'до 18:00' },
   { metric: 'Пик зрителей трансляции', goal: '250–400' },
   { metric: 'Уникальные зрители трансляции', goal: '1 800–3 000' },
   { metric: 'Короткие ролики за неделю', goal: '10–14 шт. / 10–20 тыс. охват' },
