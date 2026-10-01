@@ -7,6 +7,7 @@ import {
   metrics,
   mlbbPoints,
   schedule,
+  scheduleNote,
 } from './data/brief'
 
 const ease = [0.22, 1, 0.36, 1] as const
@@ -206,8 +207,8 @@ export default function App() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2, ease }}
           >
-            Зона Mobile Legends и уголок Genshin Impact к Китайскому Новому году — турнир,
-            косплей весь день, фонарики на ТВ и мини-игры на компах площадки.
+            Зона Mobile Legends и уголок Genshin Impact к Китайскому Новому году: турнир,
+            косплей, фонарики и мини-игры.
           </motion.p>
           <motion.div
             className="mt-10 flex flex-wrap items-center gap-4"
@@ -237,9 +238,9 @@ export default function App() {
         <section id="about" className="scroll-mt-8">
           <SectionTitle zh="活动">Описание</SectionTitle>
           <p className="mt-5 max-w-3xl leading-relaxed text-[var(--paper-dim)]">
-            Тематическая зона внутри фестиваля «Киберсуббота». Команды на турнир 5×5 регистрируются
-            заранее. ПК, столы и PlayStation — оборудование площадки. В эти даты у Genshin Impact
-            проходит внутриигровой CNY-ивент: декор, фонарики на экране и мини-игры.
+            Зона внутри фестиваля «Киберсуббота». Команды на турнир 5×5 регистрируются заранее.
+            Компьютеры, столы, телевизоры, звук и приставка — оборудование площадки. Активности
+            доступны всё время работы зоны.
           </p>
 
           <div className="mt-10 grid gap-6 lg:grid-cols-2">
@@ -270,10 +271,6 @@ export default function App() {
                   </li>
                 ))}
               </ul>
-              <p className="mt-5 text-sm leading-relaxed text-[var(--muted)]">
-                Мини-игры и фонарики в сезонной ивенте обычно бесплатны. В смету — 12 000 ₽ на
-                Welkin / кристаллы / косметику. Основная статья зоны — декор и косплеерша.
-              </p>
             </div>
           </div>
         </section>
@@ -281,7 +278,7 @@ export default function App() {
         <section id="schedule" className="scroll-mt-8">
           <SectionTitle zh="日程">Расписание дня</SectionTitle>
           <p className="mt-3 text-[var(--muted)]">
-            {eventMeta.date} · команды 5×5 — предрегистрация · фото с косплеерами — весь день
+            {eventMeta.date}. {scheduleNote}
           </p>
           <div className="panel-cny mt-8 overflow-hidden">
             <div className="divide-y divide-[var(--line)]">
@@ -314,8 +311,7 @@ export default function App() {
             </p>
           </div>
           <p className="mt-3 max-w-2xl text-sm text-[var(--muted)]">
-            ПК, столы и PlayStation — свои / площадки. В итоговую сумму входит возвращаемый залог за
-            телефоны 40 000 ₽.
+            В итоговую сумму входит возвращаемый залог за телефоны 40 000 ₽.
           </p>
 
           <div className="panel-cny mt-8 overflow-x-auto">
@@ -377,7 +373,7 @@ export default function App() {
       <footer className="relative border-t border-[var(--line)] px-5 py-10 text-center sm:px-8">
         <p className="font-festive text-3xl text-[var(--crimson-bright)]">恭喜发财</p>
         <p className="mt-2 text-sm text-[var(--muted)]">
-          Бриф зоны MLBB + Genshin · {eventMeta.title} · {eventMeta.date}
+          Бриф зоны · {eventMeta.title} · {eventMeta.date}
         </p>
       </footer>
     </div>
