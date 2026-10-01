@@ -146,20 +146,6 @@ export default function App() {
               Киберсуббота
             </p>
           </div>
-          <div className="flex flex-wrap gap-2">
-            <a
-              href="/MLBB_CyberSaturday_CNY_Smeta.xlsx"
-              className="border border-[var(--gold)]/50 bg-[rgba(196,30,58,0.35)] px-4 py-2 text-sm text-[var(--paper)] transition hover:border-[var(--gold)] hover:bg-[rgba(196,30,58,0.55)]"
-            >
-              Скачать смету .xlsx
-            </a>
-            <a
-              href="/MLBB_CyberSaturday_CNY_Brief_Budget.docx"
-              className="border border-[var(--line)] px-4 py-2 text-sm text-[var(--paper-dim)] transition hover:border-[var(--gold)]"
-            >
-              .docx
-            </a>
-          </div>
         </nav>
 
         <Lantern className="top-[14%] right-[6%] hidden h-40 w-28 opacity-95 md:block" delay={0} />
