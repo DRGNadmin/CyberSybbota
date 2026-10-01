@@ -305,10 +305,6 @@ export default function App() {
               {formatRub(total)} ₽
             </p>
           </div>
-          <p className="mt-3 max-w-2xl text-sm text-[var(--muted)]">
-            Аренда площадки, персонал, трансляция и техника — по ценам КП. Зона до 18:00.
-          </p>
-
           <div className="mt-8 space-y-6">
             {budgetSections.map((section) => (
               <div key={section.title} className="panel-cny overflow-x-auto">
