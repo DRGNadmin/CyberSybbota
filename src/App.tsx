@@ -1,6 +1,8 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import {
+  budgetNetTotal,
   budgetSections,
+  budgetVatAmount,
   eventMeta,
   formatRub,
   genshinPoints,
@@ -130,7 +132,9 @@ function SectionTitle({
 
 export default function App() {
   const reduce = useReducedMotion()
-  const total = budgetSections.reduce((sum, section) => sum + sectionTotal(section), 0)
+  const netTotal = budgetNetTotal()
+  const vatAmount = budgetVatAmount()
+  const total = eventMeta.budget
 
   return (
     <div className="cny-scene cny-clouds min-h-screen overflow-x-hidden">
@@ -357,11 +361,21 @@ export default function App() {
               </div>
             ))}
 
-            <div className="panel-cny flex items-center justify-between gap-4 bg-[rgba(240,193,75,0.14)] px-4 py-4">
-              <span className="font-display text-lg text-[var(--paper)]">Итого</span>
-              <span className="font-display text-2xl text-[var(--gold)]">
-                {formatRub(total)} ₽
-              </span>
+            <div className="panel-cny space-y-2 px-4 py-4">
+              <div className="flex items-center justify-between gap-4 text-[var(--paper-dim)]">
+                <span>Итого без НДС</span>
+                <span>{formatRub(netTotal)} ₽</span>
+              </div>
+              <div className="flex items-center justify-between gap-4 text-[var(--paper-dim)]">
+                <span>НДС 5%</span>
+                <span>{formatRub(vatAmount)} ₽</span>
+              </div>
+              <div className="flex items-center justify-between gap-4 border-t border-[var(--line)] pt-3">
+                <span className="font-display text-lg text-[var(--paper)]">Итого с НДС</span>
+                <span className="font-display text-2xl text-[var(--gold)]">
+                  {formatRub(total)} ₽
+                </span>
+              </div>
             </div>
           </div>
         </section>
