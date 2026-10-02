@@ -305,18 +305,9 @@ export default function App() {
         <section id="budget" className="scroll-mt-8">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <SectionTitle zh="预算">Смета</SectionTitle>
-            <div className="flex flex-wrap items-center gap-4">
-              <a
-                href="/MLBB_CyberSaturday_CNY_Smeta.xlsx"
-                download
-                className="border border-[var(--gold)]/55 px-4 py-2 text-sm text-[var(--gold-soft)] transition hover:border-[var(--gold)] hover:bg-[rgba(240,193,75,0.08)]"
-              >
-                Скачать Excel
-              </a>
-              <p className="font-display text-3xl text-[var(--gold-soft)] sm:text-4xl">
-                {formatRub(total)} ₽
-              </p>
-            </div>
+            <p className="font-display text-3xl text-[var(--gold-soft)] sm:text-4xl">
+              {formatRub(total)} ₽
+            </p>
           </div>
           <div className="mt-8 space-y-6">
             {budgetSections.map((section) => (
